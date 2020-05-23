@@ -1,3 +1,5 @@
+import 'package:arithmetic_calculator/calculate.dart';
+import 'package:arithmetic_calculator/widgets/calculatorlandscape.dart';
 import 'package:arithmetic_calculator/widgets/calculatorportrait.dart';
 import 'package:flutter/material.dart';
 
@@ -31,14 +33,18 @@ class _CalculatorState extends State<Calculator> {
   @override
   void initState() {
     super.initState();
-    _str = '0';
+    _str = Compute.str;
   }
 
   Widget build(BuildContext context) {
     final mediaquery = MediaQuery.of(context);
     // Checking media query orientation
     if (mediaquery.orientation == Orientation.landscape) {
-      return Container();
+      return CalculateLandscape(
+        key: widget.key,
+        title: widget.title,
+        str: this._str,
+      );
     }
     return CalculatePortrait(
       key: widget.key,
